@@ -40,16 +40,14 @@ var server = http.createServer(function(request, response){
     response.setHeader('Content-Type', 'text/css')
     response.write(string)
     response.end()
-  }else if(path === '/pay'){
+  }else if(path === '/pay' && method.toUpperCase() === 'POST'){
       var amount = fs.readFileSync('./db','utf8')
       var newAmount = amount - 1;
       fs.writeFileSync('./db',newAmount)
       if(Math.random() > 0.5){
         fs.writeFileSync('./db',newAmount)
-        response.statusCode = 200
         response.write('succcess')
       }else{
-        response.statusCode = 400
         response.write('fail')
       }
 
