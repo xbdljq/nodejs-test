@@ -43,22 +43,18 @@ var server = http.createServer(function(request, response){
   }else if(path === '/pay'){
       var amount = fs.readFileSync('./db','utf8')
       var newAmount = amount - 1;
+      fs.writeFileSync('./db',newAmount)
 
+      if(Math.random() > 0.5){
         fs.writeFileSync('./db',newAmount)
-        response.setHeader('Content-Type', 'application/javascript')
+        response.setHeader('Content-Type', 'image/png')
         response.statusCode = 200
-
-        // response.write(`
-        //   alert("我是pay")
-        //   window.location.reload()
-        // `)
-        response.write(`
-            ${query.callback}.call(undefined,{
-              "success":true,
-              "left":${newAmount}
-            })
-        `)
-
+        response.write(fs.readFileSync('./44.png'))
+        response.write('succcess')
+      }else{
+        response.statusCode = 400
+        response.write('fail')
+      }
 
       response.end()
   }

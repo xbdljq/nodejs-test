@@ -52,12 +52,7 @@ var server = http.createServer(function(request, response){
         //   alert("我是pay")
         //   window.location.reload()
         // `)
-        response.write(`
-            ${query.callback}.call(undefined,{
-              "success":true,
-              "left":${newAmount}
-            })
-        `)
+        response.write(` amount.innerText = amount.innerText - 1`)
 
 
       response.end()

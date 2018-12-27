@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>首页</title>
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+</head>
+
+<body>
+    <h5>您的账户余额是
+        <span id="amount">&&&amount&&&</span>
+
+    </h5>
+     <button id="btn">付款1块钱</button>
+    <script>
+        btn.onclick = function(){
+            let image = document.createElement('img')
+            image.src = '/pay'
+            image.onload = function(){
+                alert('打钱成功')
+                //window.location.reload()
+                amount.innerText = amount.innerText - 1
+            }
+            image.onerror = function(){
+                alert('打钱失败')
+            }
+        }
+    </script>
+</body>
+
+</html>
